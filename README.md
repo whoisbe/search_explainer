@@ -11,7 +11,7 @@
 ## 🧭 Table of Contents
 
 ### 1. 🚀 Setup
-- [Install `duckdb`, `reflex`](./install_dependencies.md)
+- [Install `duckdb`, `reflex`](install_dependencies.md)
 - Load sample dataset (e.g., documents, product catalog, articles)
 
 ### 2. 🔤 Lexical Search
