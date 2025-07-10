@@ -1,3 +1,5 @@
+# load_data.py
+
 import duckdb
 
 def load_database():

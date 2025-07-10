@@ -1,19 +1,36 @@
+# utils/dataset.py
+
 import kagglehub
 import shutil
 import os
 
-# Download latest version
-path = kagglehub.dataset_download("israrqayyum11/the-movie-database-tmdb")
+DEFAULT_DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data"))
+DEFAULT_FILENAME = "moviesData.csv"
 
-print("Path to dataset files:", path)
+def download_tmdb_dataset(data_dir=DEFAULT_DATA_DIR, filename=DEFAULT_FILENAME):
+    """
+    Downloads the TMDB dataset from KaggleHub and copies the main CSV to the data directory.
+    """
+    print("🔽 Downloading TMDB dataset from KaggleHub...")
+    try:
+        path = kagglehub.dataset_download("israrqayyum11/the-movie-database-tmdb")
+    except Exception as e:
+        print(f"❌ Error downloading dataset: {e}")
+        return
 
-# Copy moviesData.csv to the data directory
-print("Copying moviesData.csv to data directory...")
-source_file = os.path.join(path, "moviesData.csv")
-destination_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data"))
+    print("📂 Dataset downloaded at:", path)
 
-os.makedirs(destination_dir, exist_ok=True)
+    os.makedirs(data_dir, exist_ok=True)
 
-shutil.copy(source_file, destination_dir)
+    source_file = os.path.join(path, filename)
+    dest_file = os.path.join(data_dir, filename)
 
-print(f"Successfully copied 'moviesData.csv' to '{destination_dir}'")
+    if not os.path.exists(source_file):
+        print(f"❌ Source file '{source_file}' not found.")
+        return
+
+    shutil.copy(source_file, dest_file)
+    print(f"✅ Successfully copied '{filename}' to '{data_dir}'")
+
+if __name__ == "__main__":
+    download_tmdb_dataset()
