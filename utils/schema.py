@@ -36,7 +36,7 @@ def add_embedding_columns(con):
 
     for col in ['title_embeddings', 'overview_embeddings']:
         if col not in columns:
-            con.sql(f"ALTER TABLE movies ADD COLUMN {col} FLOAT[]")
+            con.sql(f"ALTER TABLE movies ADD COLUMN {col} FLOAT[1024]")
             print(f"✅ Added column '{col}'")
         else:
             print(f"ℹ️ Column '{col}' already exists")
