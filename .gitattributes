@@ -29,13 +29,3 @@
 # Shell scripts
 *.sh text eol=lf
 ```
-
-✅ **Purpose:**
-- Normalize line endings across platforms
-- Treat binary files properly
-- Improve language detection on GitHub
-- Provide predictable diffs and behavior
-
----
-
-✨ Drop this `.gitattributes` file into your project root and you’re all set!
