@@ -1,0 +1,41 @@
+# 📦 `.gitattributes` for `search_explainer`
+
+```gitattributes
+# Ensure consistent line endings (force LF on all text files)
+* text=auto eol=lf
+
+# Python files
+*.py text eol=lf
+
+# Markdown docs
+*.md text eol=lf
+
+# Jupyter Notebooks
+*.ipynb text
+
+# DuckDB database file: mark as binary (avoids accidental text diffs)
+*.duckdb binary
+
+# VS Code settings
+.vscode/* text
+
+# JSON files
+*.json text eol=lf
+
+# Explicitly set linguist-detectable languages (optional, improves GitHub language stats)
+*.py linguist-language=Python
+*.md linguist-language=Markdown
+
+# Shell scripts
+*.sh text eol=lf
+```
+
+✅ **Purpose:**
+- Normalize line endings across platforms
+- Treat binary files properly
+- Improve language detection on GitHub
+- Provide predictable diffs and behavior
+
+---
+
+✨ Drop this `.gitattributes` file into your project root and you’re all set!
