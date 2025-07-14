@@ -33,24 +33,39 @@ This matches any movie where `title` contains "alien" (case-insensitive).
 ---
 
 ## 🐍 Python Example
+We’ve provided a convenient script for this in `utils/lexical_search.py`:
+
+```bash
+python utils/lexical_search.py "alien" --limit 10
+```
+
+Example code:
 ```python
+# utils/lexical_search.py
+
 import duckdb
+import argparse
 from utils.schema import get_connection
 
-def lexical_search(query, con, limit=10):
+DEFAULT_TABLE = 'movies'
+
+def lexical_search(query, con, table=DEFAULT_TABLE, limit=10):
     sql = f"""
         SELECT id, title, overview
-        FROM movies
+        FROM {table}
         WHERE LOWER(title) LIKE '%' || LOWER($query) || '%'
         LIMIT {limit}
     """
-    results = con.sql(sql, params={"query": query}).fetchall()
-    return results
+    return con.sql(sql, params={"query": query}).fetchall()
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Lexical Search Utility")
+    parser.add_argument("query", type=str, help="Search query text")
+    parser.add_argument("--limit", type=int, default=10, help="Limit results (default 10)")
+    args = parser.parse_args()
+
     con = get_connection(readonly=True)
-    query = "alien"
-    results = lexical_search(query, con)
+    results = lexical_search(args.query, con, limit=args.limit)
 
     for row in results:
         print(f"🎬 {row[1]} (ID: {row[0]})\n📝 {row[2]}\n{'-'*40}")
@@ -61,9 +76,7 @@ if __name__ == "__main__":
 ---
 
 ## 🚀 Key Takeaways
-- Lexical search is easy to implement but limited: it doesn't handle relevance ranking, typos, or semantics.
-- Ideal as a baseline or fallback mechanism before introducing FTS and vector search.
+- Lexical search is easy to implement but limited: it doesn't handle ranking, typos, or semantics.
+- Ideal as a baseline before introducing FTS and vector search.
 
-✅ Next step: Upgrade to **full-text search using DuckDB’s FTS extension**.
-
-👉 [Proceed to Full Text Search Tutorial ➡️](#)
+👉 [Next: Full-Text Search ➡️](03_full_text_search.md)
