@@ -18,3 +18,7 @@ Then install using pip:
 ```bash
 pip install -r requirements.txt
 ```
+
+---
+
+👉 [Next: Lexical Search ➡️](02_lexical_search.md)
