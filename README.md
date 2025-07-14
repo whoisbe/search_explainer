@@ -63,11 +63,12 @@ python -m utils.dataset
 # Initialize database and schema
 python -m utils.schema
 
-# Optional: Generate embeddings (requires Ollama running locally)
-python -m utils.embeddings
-
 # Create FTS index
 python -m utils.fts
+
+# Generate embeddings (requires Ollama running locally)
+python -m utils.embeddings
+
 ```
 
 ---
