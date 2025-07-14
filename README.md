@@ -1,45 +1,96 @@
-# 📚 Search Explainer - Tutorial Series
+# 🔎 Search Explainer
+
+A hands-on tutorial project that demonstrates modern search paradigms using **DuckDB**, **Ollama embeddings**, and a **developer-friendly Python toolkit**. 
+
+This project is designed as a **portfolio-quality reference and a future-ready course framework**.
+
+---
+
+## 📦 Project Structure
+
+```
+search_explainer/
+├── data/             # Datasets (excluded via .gitignore)
+├── utils/            # Modular scripts for DB setup, indexing, embeddings, search
+├── docs/             # Markdown tutorials (Setup, Lexical, FTS, VSS, Hybrid)
+├── movies.duckdb     # DuckDB database file (excluded via .gitignore)
+├── requirements.txt  # Python dependencies
+├── .gitignore
+├── .gitattributes
+└── README.md         # You are here!
+```
+
+---
 
 ## 🎯 Objectives
-- Explain core search paradigms in modern data systems.
-- Cover full text search, vector search, and semantic search with hands-on examples and code walkthroughs.
-- Bridge foundational search theory with applied tools like Hugging Face embeddings and DuckDB.
-- Serve as a developer-friendly guide for search system architecture and performance insights.
+
+✅ Explain core search paradigms:
+- Lexical Search
+- Full-Text Search (BM25)
+- Vector Similarity Search (VSS)
+- Hybrid Search with RRF
+
+✅ Provide developer-ready, reproducible examples:
+- DuckDB native tooling (`fts`, `vss` extensions)
+- Hugging Face + Ollama embeddings
+- CLI utilities
+- Clean schema & dataset loading
+
+✅ Serve as a future foundation for a **Reflex-based UI demo** and an extensible technical course.
 
 ---
 
-## 🧭 Table of Contents
+## 🏃‍♂️ Quick Start
 
-### 1. 🚀 Setup
-- Install `duckdb`, `reflex`
-- Load sample dataset (e.g., documents, product catalog, articles)
+```bash
+# Install dependencies
+pip install -r requirements.txt
 
-### 2. 🔤 Lexical Search
-- What is lexical search?
-- How does it work (string matching, tokenization)?
-- Implement basic search UI using Reflex
+# Download dataset
+python utils/dataset.py
 
-### 3. 📚 Full Text Search
-- What is full text search?
-- How does it differ from lexical search?
-- Install and use `fts` extension in DuckDB
-- Create full text index and run queries
-- Update UI to allow switching between lexical and FTS
+# Initialize database
+python utils/schema.py
 
-### 4. 🧠 Vector Similarity Search
-- What is vector similarity search?
-- How does it work (embeddings, cosine similarity)?
-- Install and use `vss` extension in DuckDB
-- Generate vectors using Hugging Face embeddings
-- Update UI to allow vector-based search
+# Optional: Add embeddings (requires Ollama running locally)
+python utils/embeddings.py
 
-### 5. 🌀 Hybrid Search
-- What is hybrid search?
-- What is Reciprocal Rank Fusion (RRF)?
-- Install and use `flockmtl` (or similar tool)
-- Combine FTS and vector results with RRF
-- Update UI to support hybrid search selection
+# Create FTS index
+python utils/fts.py
+
+# Run lexical search example
+python utils/fts_search.py "alien"
+
+# Run vector similarity search example
+python utils/vss.py "space adventure"
+```
 
 ---
 
-Stay tuned for code examples, diagrams, and interactive search playgrounds!
+## 📖 Documentation
+Tutorials and walkthroughs are in the [`docs/`](docs/index.md) folder:
+
+- [Setup](docs/01_setup.md)
+- [Lexical Search](docs/02_lexical_search.md)
+- [Full-Text Search](docs/03_full_text_search.md)
+- [Vector Similarity Search](docs/04_vector_search.md)
+- [Hybrid Search](docs/05_hybrid_search.md)
+
+---
+
+## 🔔 Notes
+- Dataset: [TMDB Movie Dataset](https://www.kaggle.com/datasets/israrqayyum11/the-movie-database-tmdb)
+- DuckDB extensions: `fts`, `vss`
+- Embedding generator: [Ollama](https://ollama.ai/)
+
+---
+
+## 🧰 Development Standards
+
+- `.gitignore`: Excludes `movies.duckdb`, dataset files, caches, virtualenvs
+- `.gitattributes`: Normalizes line endings and enforces file type handling
+- Modular, clean Python utilities for easy reuse and composition
+
+---
+
+✨ **Happy building — and happy searching!** 🚀
