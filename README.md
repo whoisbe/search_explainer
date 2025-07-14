@@ -1,6 +1,6 @@
 # 🔎 Search Explainer
 
-A hands-on tutorial project that demonstrates modern search paradigms using **DuckDB**, **Ollama embeddings**, and a **developer-friendly Python toolkit**. 
+A hands-on tutorial project that demonstrates modern search paradigms using **DuckDB**, **Ollama embeddings**, and a **developer-friendly Python toolkit**.
 
 This project is designed as a **portfolio-quality reference and a future-ready course framework**.
 
@@ -43,31 +43,56 @@ search_explainer/
 ## 🏃‍♂️ Quick Start
 
 ```bash
+# (Optional but recommended) Create a virtual environment
+python -m venv venv
+source venv/bin/activate   # Linux/macOS
+# venv\Scripts\activate  # Windows
+
 # Install dependencies
 pip install -r requirements.txt
+```
 
+---
+
+### 🔧 Workflow
+
+```bash
 # Download dataset
-python utils/dataset.py
+python -m utils.dataset
 
-# Initialize database
-python utils/schema.py
+# Initialize database and schema
+python -m utils.schema
 
-# Optional: Add embeddings (requires Ollama running locally)
-python utils/embeddings.py
+# Optional: Generate embeddings (requires Ollama running locally)
+python -m utils.embeddings
 
 # Create FTS index
-python utils/fts.py
+python -m utils.fts
+```
 
-# Run lexical search example
-python utils/fts_search.py "alien"
+---
 
-# Run vector similarity search example
-python utils/vss.py "space adventure"
+### 🔍 Example Search Scripts
+
+#### 🔤 Lexical Search
+```bash
+python -m utils.lexical_search "alien" --limit 10
+```
+
+#### 📝 Full-Text Search
+```bash
+python -m utils.fts_search "space exploration" --limit 5 --fields overview
+```
+
+#### 🧠 Vector Similarity Search
+```bash
+python -m utils.vss "space adventure" --limit 5 --model mxbai-embed-large
 ```
 
 ---
 
 ## 📖 Documentation
+
 Tutorials and walkthroughs are in the [`docs/`](docs/index.md) folder:
 
 - [Setup](docs/01_setup.md)
@@ -79,9 +104,11 @@ Tutorials and walkthroughs are in the [`docs/`](docs/index.md) folder:
 ---
 
 ## 🔔 Notes
+
 - Dataset: [TMDB Movie Dataset](https://www.kaggle.com/datasets/israrqayyum11/the-movie-database-tmdb)
 - DuckDB extensions: `fts`, `vss`
 - Embedding generator: [Ollama](https://ollama.ai/)
+- Embedding generation (~8,500 records) may take ~18 minutes on an M1 Mac — ☕ ideal coffee break!
 
 ---
 
@@ -90,6 +117,7 @@ Tutorials and walkthroughs are in the [`docs/`](docs/index.md) folder:
 - `.gitignore`: Excludes `movies.duckdb`, dataset files, caches, virtualenvs
 - `.gitattributes`: Normalizes line endings and enforces file type handling
 - Modular, clean Python utilities for easy reuse and composition
+- Consistent `python -m utils.*` execution pattern for all scripts
 
 ---
 
