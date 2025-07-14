@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+
+# VS Code workspace settings
+.vscode/
+
+# DuckDB database file
+movies.duckdb
+
+# Data directory
+data/
+!data/.gitkeep  # If you want to keep the empty folder structure in git
+
+# Ollama caches (optional, if applicable)
+ollama/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Mac / Windows system files
+.DS_Store
+Thumbs.db
