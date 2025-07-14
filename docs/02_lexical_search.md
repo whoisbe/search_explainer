@@ -33,10 +33,11 @@ This matches any movie where `title` contains "alien" (case-insensitive).
 ---
 
 ## 🐍 Python Example
-We’ve provided a convenient script for this in `utils/lexical_search.py`:
+We’ve provided a convenient script for this in `utils/lexical_search.py`.
 
+⚠️ **Run it using Python's `-m` module syntax to avoid import errors:**
 ```bash
-python utils/lexical_search.py "alien" --limit 10
+python -m utils.lexical_search "alien" --limit 10
 ```
 
 Example code:

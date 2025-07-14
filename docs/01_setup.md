@@ -28,6 +28,8 @@ reflex
 pandas
 huggingface-hub
 sentence-transformers
+kagglehub
+ollama
 ```
 
 Then install using pip:
