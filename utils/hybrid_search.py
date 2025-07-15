@@ -39,17 +39,17 @@ def run_hybrid_search(query, limit, k):
     # Each list is a list of tuples with movie id as first element
     fused = reciprocal_rank_fusion([lex_results, fts_results, vss_results], k=k)
 
-    print(f\"\\n🔎 Hybrid Search Results for query: '{query}'\\n\")
+    print(f"\n🔎 Hybrid Search Results for query: '{query}'\n")
     for i, (row, score) in enumerate(fused[:limit], start=1):
-        print(f\"#{i} 🎬 {row[1]} (ID: {row[0]}) | RRF Score: {score:.4f}\\n📝 {row[2]}\\n{'-'*40}\")
+        print(f"#{i} 🎬 {row[1]} (ID: {row[0]}) | RRF Score: {score:.4f}\n📝 {row[2]}\n{'-'*40}")
 
     con.close()
 
-if __name__ == \"__main__\":
-    parser = argparse.ArgumentParser(description=\"Hybrid Search with RRF\")
-    parser.add_argument(\"query\", type=str, help=\"Search query text\")
-    parser.add_argument(\"--limit\", type=int, default=DEFAULT_LIMIT, help=\"Limit number of results\")
-    parser.add_argument(\"--rrf_k\", type=int, default=DEFAULT_K, help=\"RRF k parameter (default 60)\")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Hybrid Search with RRF")
+    parser.add_argument("query", type=str, help="Search query text")
+    parser.add_argument("--limit", type=int, default=DEFAULT_LIMIT, help="Limit number of results")
+    parser.add_argument("--rrf_k", type=int, default=DEFAULT_K, help="RRF k parameter (default 60)")
 
     args = parser.parse_args()
 
